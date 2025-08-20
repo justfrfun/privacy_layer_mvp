@@ -32,3 +32,8 @@ out*/**/*.json
 !data/sample_transactions_bad.csv
 !data/sample_transactions.csv
 !data/sample_transactions.json
+
+# Build / output dirs
+out*/
+*.egg-info/
+.DS_Store
