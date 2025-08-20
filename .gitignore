@@ -1,39 +1,34 @@
-# --- Python ---
+# ---- Python ----
 __pycache__/
-*.py[cod]
+*.pyc
 *.pyo
+*.pyd
 *.pyd
 *.egg-info/
 .eggs/
-build/
 dist/
+build/
 pip-wheel-metadata/
 
-# --- Virtual envs ---
+# ---- Virtual envs ----
 .venv/
 venv/
 
-# --- macOS / IDE ---
+# ---- macOS / IDE ----
 .DS_Store
 .vscode/
 .idea/
 
-# --- Tests ---
+# ---- Tests ----
 .pytest_cache/
 
-# --- Project outputs (keep sample inputs) ---
+# ---- Project outputs (ignore all generated outputs) ----
 out*/
-out_*/
-out_demo*/
-out_demo_bad/
-out_docker_*/
-**/quarantine*.csv
-**/dataset_masked.csv
-**/governance_log.json
+out*/**/*.csv
+out*/**/*.parquet
+out*/**/*.json
 
-# Keep sample data files tracked
-!data/sample_transactions.csv
+# ---- Keep sample data files tracked ----
 !data/sample_transactions_bad.csv
-
-# Parquet artifacts (we don't commit generated data)
-*.parquet
+!data/sample_transactions.csv
+!data/sample_transactions.json
