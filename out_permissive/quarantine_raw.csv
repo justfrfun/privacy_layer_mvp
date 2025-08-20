@@ -1,0 +1,11 @@
+transaction_id,date,merchant,amount,customer_name,customer_email,card_number,city,state,zip,account_id,quarantine_reason
+1,12/24/25,STARBUCKS,35.2,Jason Jordan,jordan.johns@example.com,4259123795261234.0,Denver,FL,91543,acct_7178,invalid_date_format
+2,1/5/25,TARGET,3369.1,Sam Brown,sam.brown@example.com,5237190689123456.0,Portland,WA,23337,acct_5460,invalid_date_format
+3,1/7/25,LYFT,51.5,Ryan Kim,ryan.kim@example.com,378282000000000.0,Miami,TX,85237,acct_2007,invalid_date_format
+4,1/10/25,WALMART,2.35,Taylor Johnson,taylor.johnson@example.com,6011111111111117.0,Austin,TX,96026,acct_4928,invalid_date_format
+5,1/12/25,TARGET,50.6,Alex Kim,alex.kim@example.com,30569300000000.0,Seattle,TX,95047,acct_4310,invalid_date_format
+1,12/24/25,STARBUCKS,35.2,Jason Jordan,jordan.johns@example.com,4259123795261234.0,Denver,FL,91543,acct_7178,invalid_date_format
+2,1/5/25,TARGET,3369.1,Sam Brown,sam.brown@example.com,5237190689123456.0,Portland,WA,23337,acct_5460,invalid_date_format
+3,1/7/25,LYFT,51.5,Ryan Kim,ryan.kim@example.com,378282000000000.0,Miami,TX,85237,acct_2007,invalid_date_format
+4,1/10/25,WALMART,2.35,Taylor Johnson,taylor.johnson@example.com,6011111111111117.0,Austin,TX,96026,acct_4928,invalid_date_format
+5,1/12/25,TARGET,50.6,Alex Kim,alex.kim@example.com,30569300000000.0,Seattle,TX,95047,acct_4310,invalid_date_format

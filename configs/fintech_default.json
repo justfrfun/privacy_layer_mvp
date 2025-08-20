@@ -1,0 +1,50 @@
+{
+  "name": "fintech_default",
+  "version": "0.1.0",
+  "pii_fields": {
+    "customer_name": "tokenize",
+    "customer_email": "tokenize",
+    "card_number": "mask_fpe_last4",
+    "account_id": "tokenize"
+  },
+  "regex_pii": {
+    "email": {
+      "pattern": "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}",
+      "action": "tokenize"
+    },
+    "pan": {
+      "pattern": "\\b(?:\\d[ -]*?){13,19}\\b",
+      "action": "mask_fpe_last4"
+    }
+  },
+  "schema": {
+    "required_columns": [
+      "transaction_id",
+      "date",
+      "merchant",
+      "amount",
+      "customer_name",
+      "customer_email",
+      "card_number",
+      "city",
+      "state",
+      "zip",
+      "account_id"
+    ],
+    "dtypes": {
+      "transaction_id": "str",
+      "date": "date",
+      "merchant": "str",
+      "amount": "float",
+      "customer_name": "str",
+      "customer_email": "str",
+      "card_number": "str",
+      "city": "str",
+      "state": "str",
+      "zip": "str",
+      "account_id": "str"
+    },
+    "date_format": "%Y-%m-%d",
+    "strict_dates": true
+  }
+}

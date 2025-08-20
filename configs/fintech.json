@@ -1,0 +1,7 @@
+{
+    "policy": {
+        "mask": ["NAME", "EMAIL"],
+        "tokenize": ["ACCOUNT_NUMBER"],
+        "drop": ["SSN"]
+    }
+}

@@ -1,0 +1,6 @@
+transaction_id,date,merchant,amount,customer_name,customer_email,card_number,city,state,zip,account_id
+1,12/24/25,STARBUCKS,35.2,Jason Jordan,jordan.johns@example.com,4259123795261234,Denver,FL,91543,acct_7178
+2,1/5/25,TARGET,3369.1,Sam Brown,sam.brown@example.com,5237190689123456,Portland,WA,23337,acct_5460
+3,1/7/25,LYFT,51.5,Ryan Kim,ryan.kim@example.com,3.78282E+14,Miami,TX,85237,acct_2007
+4,1/10/25,WALMART,2.35,Taylor Johnson,taylor.johnson@example.com,6011111111111117,Austin,TX,96026,acct_4928
+5,1/12/25,TARGET,50.6,Alex Kim,alex.kim@example.com,3.05693E+13,Seattle,TX,95047,acct_4310

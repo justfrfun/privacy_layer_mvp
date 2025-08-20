@@ -1,0 +1,16 @@
+{
+  "policy": "fintech_default",
+  "policy_version": "0.1.0",
+  "input": "data/sample_transactions.csv",
+  "output_csv": "out_param/dataset_masked.csv",
+  "output_parquet": "out_param/dataset_masked.parquet",
+  "totals": {
+    "rows": 250,
+    "actions": 1500
+  },
+  "strict_mode": false,
+  "extra_columns": [],
+  "quarantined_rows": 0,
+  "quarantine_path": "",
+  "quarantine_masked_path": ""
+}
