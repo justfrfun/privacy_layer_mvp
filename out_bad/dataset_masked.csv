@@ -1,6 +1,0 @@
-transaction_id,date,merchant,amount,customer_name,customer_email,card_number,city,state,zip,account_id
-1,2025-12-24,STARBUCKS,35.2,<PII:customer_name:sUgd7a1pmQr29xKO>,<PII:customer_email:gjN2xEL1ItqxY002>,*************2340,Denver,FL,91543,<PII:account_id:jeowZkk0LMRTvO-9>
-2,2025-01-05,TARGET,3369.1,<PII:customer_name:CAadAl-avNEchuI0>,<PII:customer_email:6oLBXGgpWAiQa3CK>,*************4560,Portland,WA,23337,<PII:account_id:Wa3nijGMJjWrN5ZP>
-3,2025-01-07,LYFT,51.5,<PII:customer_name:GWSPtZAhITy5nk_o>,<PII:customer_email:1SVCxZe1SfhlqtfN>,************0000,Miami,TX,85237,<PII:account_id:3emy4EPZ7z3xA4tP>
-4,2025-01-10,WALMART,2.35,<PII:customer_name:dO1GI-_1ogXFAHYi>,<PII:customer_email:ryDOehd4kX7Pe9Mc>,*************1170,Austin,TX,96026,<PII:account_id:m6-VvFvgu1KLuarr>
-5,2025-01-12,TARGET,50.6,<PII:customer_name:M9AYzlptbwhCE7IU>,<PII:customer_email:sEUOovr-AY3LfBbk>,***********0000,Seattle,TX,95047,<PII:account_id:r-O0cg8XUc3V2lHE>
