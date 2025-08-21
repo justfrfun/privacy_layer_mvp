@@ -1,7 +1,7 @@
 # Privacy Layer MVP  
 *A tiny, local-first pipeline that enforces schema, masks PII, and quarantines bad rows. Great for demos and as a stepping stone to a universal privacy-aware wrapper.*  
 
-[![Build Status](https://github.com/justfrfun/privacy_layer_mvp/actions/workflows/python-app.yml/badge.svg)](https://github.com/justfrfun/privacy_layer_mvp/actions)  
+[![Build Status](https://github.com/justfrfun/privacy_layer_mvp/actions/workflows/ci.yml/badge.svg)](https://github.com/justfrfun/privacy_layer_mvp/actions/workflows/ci.yml)
 
 ---
 
