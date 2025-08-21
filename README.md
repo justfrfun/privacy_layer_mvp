@@ -1,142 +1,103 @@
-# Privacy Layer MVP
+# Privacy Layer MVP  
+*A tiny, local-first pipeline that enforces schema, masks PII, and quarantines bad rows. Great for demos and as a stepping stone to a universal privacy-aware wrapper.*  
 
-A tiny, local-first pipeline that enforces schema, masks/tokenizes PII, and quarantines bad rows.  
-Great for demos and as a stepping stone to a universal privacy-aware wrapper.
-
----
-
-## Quickstart
-
-```bash
-# 1) Create & activate a virtualenv (once)
-python3 -m venv venv
-source venv/bin/activate
-
-# 2) Install deps
-make install
-```
----
-## Build Badge
-![CI](https://github.com/justfrfun/privacy_layer_mvp/actions/workflows/ci.yml/badge.svg)
+[![Build Status](https://github.com/justfrfun/privacy_layer_mvp/actions/workflows/python-app.yml/badge.svg)](https://github.com/justfrfun/privacy_layer_mvp/actions)  
 
 ---
 
-## Demo (happy path)
+## 🌐 Overview  
+This project demonstrates a lightweight, privacy-aware data pipeline. It is designed to be:  
 
-```bash
-make demo
-```
+- **Local-first** → Runs without relying on external services.  
+- **Schema-enforcing** → Ensures datasets match expected structure.  
+- **Privacy-aware** → Detects and masks Personally Identifiable Information (PII).  
+- **Governance-ready** → Quarantines bad rows and logs masking/quarantine events.  
 
-**Outputs → `out_demo/`**
-
-- `dataset_masked.csv` – CSV with PII masked/tokenized  
-- `dataset_masked.parquet` – Parquet copy  
-- `governance_log.json` – log of actions, counts, and metadata  
-
-Run an audit check:
-
-```bash
-python audit/verify.py out_demo
-```
-
-✅ Should PASS with 250 rows processed and no quarantines.
+Think of this MVP as a **universal privacy wrapper prototype**: a foundation for more advanced governance, interoperability, and AI-readiness.  
 
 ---
 
-## Demo (bad input → quarantine)
-
-```bash
-make demo-bad
-```
-
-**Outputs → `out_demo_bad/`**
-
-- `quarantine_raw.csv` – unmasked bad rows + reason  
-- `quarantine_masked.csv` – privacy-safe copy of bad rows  
-- `governance_log.json` – includes `quarantined_rows` + paths  
-
-Example: rows with invalid date formats get dropped into quarantine with the reason annotated.
-
----
-
-## Governance log
-
-Every run writes a governance log JSON with metadata:
-
-```json
-{
-  "policy": "fintech_default",
-  "policy_version": "0.1.0",
-  "input": "data/sample_transactions.csv",
-  "output_csv": "out_demo/dataset_masked.csv",
-  "output_parquet": "out_demo/dataset_masked.parquet",
-  "totals": { "rows": 250, "actions": 1500 },
-  "quarantined_rows": 0,
-  "quarantine_path": "",
-  "quarantine_masked_path": ""
-}
-```
-
----
-
-## Policies
-
-Policies live in `configs/` (e.g. `fintech_default.json`, `fintech.json`).  
-They describe what fields to enforce, mask, tokenize, or quarantine.  
-
-Example (simplified):
-
-```json
-{
-  "fields": {
-    "customer_email": "tokenize",
-    "card_number": "mask_pan",
-    "account_id": "tokenize"
-  },
-  "strict_mode": false
-}
-```
-
----
-
-## Audit
-
-You can sanity-check an output directory anytime:
-
-```bash
-python audit/verify.py out_demo
-```
-
-Checks include:
-
-- Row counts match  
-- No obvious emails or PANs leak through  
-- Tokenized columns are consistent  
-
----
-
-## Data Flow
+## 🔄 Data Flow  
 
 ```mermaid
-flowchart LR
-    A[Input CSV] --> B[Process: schema + PII masking/tokenization]
-    B --> C[Masked dataset → dataset_masked.csv/parquet]
-    B --> D[Quarantine bad rows → quarantine_raw.csv]
-    D --> E[Privacy-safe quarantine → quarantine_masked.csv]
-    B --> F[Governance log → governance_log.json]
+flowchart TD
+    A[Raw Data] --> B[Schema Validation]
+    B --> C{Valid?}
+    C -- Yes --> D[PII Masking]
+    C -- No --> Q[Quarantine]
+    D --> E[Masked Dataset]
+    E --> L[Governance Log]
+    Q --> L
+```
+
+- **Raw Data** → Any CSV file.  
+- **Schema Validation** → Ensures column structure matches expectations.  
+- **PII Masking** → Sensitive fields are replaced with masked values.  
+- **Quarantine** → Invalid rows are isolated for review.  
+- **Governance Log** → Records all transformations for auditing.  
+
+---
+
+## 🚀 Features (current MVP)  
+
+- ✅ CSV schema validation  
+- ✅ PII masking (basic patterns)  
+- ✅ Quarantine handling for invalid rows  
+- ✅ Governance logging (JSON)  
+
+---
+
+## 📦 Installation  
+
+```bash
+git clone git@github.com:justfrfun/privacy_layer_mvp.git
+cd privacy_layer_mvp
+pip install -r requirements.txt
 ```
 
 ---
 
-## Next steps
+## ▶️ Usage  
 
-- Add more sample policies under `configs/`  
-- Extend schema + quarantine rules for your domain  
-- Integrate into ETL/ML pipelines  
-- Push logs into a governance backend  
+Run the pipeline on a sample dataset:  
+
+```bash
+python run_pipeline.py --input data/sample.csv --output out/
+```
+
+Outputs will include:  
+
+- **Masked dataset** → `out/dataset_masked.csv`  
+- **Quarantine rows** → `out/quarantine.csv`  
+- **Governance log** → `out/governance_log.json`  
 
 ---
 
-## License
+## 🧪 Demo  
 
-MIT — see [LICENSE](LICENSE).
+Want to try quickly? Use the provided demo script:  
+
+```bash
+python demo.py
+```
+
+This generates:  
+
+- **Good outputs** under `out_demo/`  
+- **Quarantined outputs** under `out_demo_bad/`  
+
+---
+
+## 📋 Roadmap  
+
+- [ ] Add schema definitions to `schema.py`  
+- [ ] Implement token vault (`vault.py`) for reversible pseudonymization  
+- [ ] Expand input support (Parquet, JSON)  
+- [ ] Add pluggable detection engines (e.g., Presidio)  
+- [ ] Cloud + local storage interoperability  
+
+---
+
+## 📜 License  
+
+MIT License.  

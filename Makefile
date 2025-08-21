@@ -93,3 +93,15 @@ docker-demo-bad:
 		--out out_docker_bad \
 		--policy configs/fintech_default.json || true
 	$(PYTHON) audit/verify.py out_docker_bad
+
+.PHONY: help clean demo demo-bad docker-build docker-run docker-run-strict docker-demo docker-demo-bad
+
+help:
+	@echo "Targets:"
+	@echo "  demo                 – run local good-data demo in venv"
+	@echo "  demo-bad             – run local bad-data demo (creates quarantine files)"
+	@echo "  docker-build         – build privacy-layer:latest"
+	@echo "  docker-run           – run with IN=..., OUT=..., POLICY=..."
+	@echo "  docker-run-strict    – same as docker-run but adds --strict"
+	@echo "  docker-demo          – canned good-data docker run"
+	@echo "  docker-demo-bad      – canned bad-data docker run"
