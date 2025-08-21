@@ -36,8 +36,7 @@ jobs:
             --policy configs/fintech_default.json
 
       - name: Verify outputs
-        run: |
-          python audit/verify.py out_ci
+        run: python audit/verify.py out_ci configs/fintech_default.json
 
       - name: Upload CI outputs (artifact)
         if: always()

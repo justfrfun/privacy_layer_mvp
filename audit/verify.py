@@ -1,5 +1,6 @@
 import re
 import json
+import sys, os
 from pathlib import Path
 import pandas as pd
 
@@ -86,4 +87,8 @@ def main(out_dir="out", policy_path="configs/fintech_default.json"):
     print("\nOVERALL:", "PASS ✅" if ok else "FAIL ❌")
 
 if __name__ == "__main__":
-    main()
+    out_dir = sys.argv[1] if len(sys.argv) > 1 else os.environ.get("OUT_DIR", "out")
+    policy_path = (
+        sys.argv[2] if len(sys.argv) > 2 else os.environ.get("POLICY_PATH", "configs/fintech_default.json")
+    )
+    main(out_dir=out_dir, policy_path=policy_path)
